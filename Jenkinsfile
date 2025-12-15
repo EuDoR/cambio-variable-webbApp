@@ -17,7 +17,7 @@ pipeline {
           "chenvwebapp1:webapp-app1"
           "chenvwebapp2:webapp-app2"
         )
-
+        echo ${TARGETS[@]}
         for ITEM in "${TARGETS[@]}"; do
           RG="${ITEM%%:*}"
           APP="${ITEM##*:}"
