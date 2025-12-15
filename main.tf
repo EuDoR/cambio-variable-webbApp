@@ -7,7 +7,7 @@ provider "azuread" {
 }
 
 resource "azurerm_resource_group" "chenvwebapp1" {
-  name     = "chenvwebapp"
+  name     = "chenvwebapp1"
   location = "East US"
 }
 
