@@ -12,6 +12,7 @@ pipeline {
     stage('Update App Settings') {
       steps {
         sh '''
+        #!/usr/bin/env bash
         TARGETS=(
           "chenvwebapp1:webapp-app1"
           "chenvwebapp2:webapp-app2"
