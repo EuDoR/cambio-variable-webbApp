@@ -6,7 +6,7 @@ provider "azuread" {
 
 }
 
-resource "azurerm_resource_group" "chenvwebapp" {
+resource "azurerm_resource_group" "chenvwebapp1" {
   name     = "chenvwebapp"
   location = "East US"
 }
@@ -34,28 +34,28 @@ resource "azurerm_linux_web_app" "webapp-app1" {
 }
 
 #segundo webapp2
-# resource "azurerm_resource_group" "chenvwebapp2" {
-#   name     = "chenvwebapp2"
-#   location = "East US"
-# }
+resource "azurerm_resource_group" "chenvwebapp2" {
+  name     = "chenvwebapp2"
+  location = "East US"
+}
 
-# resource "azurerm_service_plan" "PlanWebapp2" {
-#   name                = "servicePlanWebapp2"
-#   location            = azurerm_resource_group.chenvwebapp2.location
-#   resource_group_name = azurerm_resource_group.chenvwebapp2.name
-#   os_type = "Linux"
-#   sku_name = "F1"
-# }
+resource "azurerm_service_plan" "PlanWebapp2" {
+  name                = "servicePlanWebapp2"
+  location            = azurerm_resource_group.chenvwebapp2.location
+  resource_group_name = azurerm_resource_group.chenvwebapp2.name
+  os_type = "Linux"
+  sku_name = "F1"
+}
 
-# resource "azurerm_linux_web_app" "webapp-app2" {
-#   name                = "webapp-app2"
-#   location            = azurerm_resource_group.chenvwebapp2.location
-#   resource_group_name = azurerm_resource_group.chenvwebapp2.name
-#   service_plan_id     = azurerm_service_plan.PlanWebapp2.id
-#   site_config {
-#     always_on = false
-#   }
-#   app_settings = {
-#     "variable" = "valor1"
-#  }
-# }
+resource "azurerm_linux_web_app" "webapp-app2" {
+  name                = "webapp-app2"
+  location            = azurerm_resource_group.chenvwebapp2.location
+  resource_group_name = azurerm_resource_group.chenvwebapp2.name
+  service_plan_id     = azurerm_service_plan.PlanWebapp2.id
+  site_config {
+    always_on = false
+  }
+  app_settings = {
+    "variable" = "valor1"
+ }
+}
