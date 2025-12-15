@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    string(name: 'valor1', description: 'Valor de la variable')
+    string(name: 'ENV_VALUE', description: 'Valor de la variable')
   }
   stages {
     stage('Login Azure') {
