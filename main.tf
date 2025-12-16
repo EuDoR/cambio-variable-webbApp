@@ -56,7 +56,7 @@ resource "azurerm_linux_web_app" "webapp-app2" {
     always_on = false
   }
   app_settings = {
-    "variableA" = "valor1"
+    "variableA" = "valordiferente"
  }
 }
 
@@ -107,5 +107,32 @@ resource "azurerm_linux_web_app" "webapp-app4" {
   }
   app_settings = {
     "variableA" = "valor1"
+ }
+}
+
+#quinto webapp5
+
+resource "azurerm_resource_group" "chenvwebapp5" {
+  name     = "chenvwebapp5"
+  location = "East US"
+}
+resource "azurerm_service_plan" "PlanWebapp5" {
+  name                = "servicePlanWebapp5"
+  location            = azurerm_resource_group.chenvwebapp5.location
+  resource_group_name = azurerm_resource_group.chenvwebapp5.name
+  os_type = "Linux"
+  sku_name = "F1"
+}
+
+resource "azurerm_linux_web_app" "webapp-app5" {
+  name                = "webapp-app5"
+  location            = azurerm_resource_group.chenvwebapp5.location
+  resource_group_name = azurerm_resource_group.chenvwebapp5.name
+  service_plan_id     = azurerm_service_plan.PlanWebapp5.id
+  site_config {
+    always_on = false
+  }
+  app_settings = {
+    "variableA" = "valordiferente"
  }
 }
